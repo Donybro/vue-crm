@@ -9,10 +9,12 @@ import "materialize-css/dist/js/materialize.min";
 import dateFilter from "./filters/filter.date";
 import filterCurrency from "./filters/filter.currency";
 import messageToastPlugin from "./plugins/custom.message.toast";
+import tooltipDirective from "./directives/tooltip.directive";
 import firebase from "firebase/app";
 
 Vue.filter("date", dateFilter);
 Vue.filter("currency", filterCurrency);
+Vue.directive("tooltip", tooltipDirective);
 Vue.use(AsyncComputed);
 Vue.use(Vuelidate);
 Vue.use(messageToastPlugin);

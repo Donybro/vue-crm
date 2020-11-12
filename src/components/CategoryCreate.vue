@@ -83,6 +83,7 @@ export default {
       this.limit = null;
       this.name = "";
       this.$emit("category-created");
+      this.$customMessageToast("Категория успешно добавлена");
     }
   }
 };

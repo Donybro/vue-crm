@@ -1,4 +1,4 @@
-export default function filterCurrency(value, currency) {
+export default function filterCurrency(value, currency = "UZB") {
   const options = {
     style: "currency",
     currency

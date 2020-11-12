@@ -31,6 +31,20 @@ export default {
       ).val();
       commit("setUserInfo", info);
     },
+    async updateUserInfo({ dispatch, commit, getters }, updatedValue) {
+      try {
+        const uid = await dispatch("getUId");
+        const updatedData = { ...getters.getUserInfo, ...updatedValue };
+        await firebase
+          .database()
+          .ref(`users/${uid}/info`)
+          .update(updatedData);
+        commit("setUserInfo", updatedData);
+      } catch (e) {
+        dispatch("setCurrentError", e.code);
+        throw e;
+      }
+    },
     clearUserInfo({ commit }) {
       return commit("clearUserInfo");
     }

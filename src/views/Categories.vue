@@ -3,18 +3,20 @@
     <div class="page-title">
       <h3>Категории</h3>
     </div>
-    <section v-if="!isLoading">
+    <section>
       <div class="row">
         <CategoryCreate @category-created="refresh" />
+        <Loader v-if="isLoading" class="center col s6" />
         <CategoryEdit
-          v-if="categories.length"
+          v-else-if="!isLoading && categories"
           @category-updated="refresh"
           :categories="categories"
         />
-        <p v-else class="center">Категорий еще нет</p>
+        <p v-else class="center col s6">
+          Категорий еще нет
+        </p>
       </div>
     </section>
-    <Loader v-else />
   </div>
 </template>
 
@@ -27,7 +29,6 @@ export default {
   name: "Categories",
   data() {
     return {
-      key: 1111111,
       categories: null,
       isLoading: true
     };
@@ -47,4 +48,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.a {
+  border: 1px solid #000;
+}
+</style>

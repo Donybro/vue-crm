@@ -21,13 +21,11 @@
         <div class="input-field">
           <input type="text" id="name" v-model="selectedCategoryName" />
           <label for="name">Название</label>
-          <span class="helper-text invalid">TITLE</span>
         </div>
 
         <div class="input-field">
           <input id="limit" type="number" v-model="selectedCategoryLimit" />
           <label for="limit">Лимит</label>
-          <span class="helper-text invalid">LIMIT</span>
         </div>
         <button class="btn waves-effect waves-light" type="submit">
           Обновить
@@ -66,10 +64,12 @@ export default {
           limit: this.selectedCategoryLimit
         });
         this.$emit("category-updated");
+        this.$customMessageToast("Категория успешно обнавлена");
       }
     }
   },
   async mounted() {
+    window.M.updateTextFields();
     this.select = window.M.FormSelect.init(this.$refs.select);
     this.isLoading = false;
   },

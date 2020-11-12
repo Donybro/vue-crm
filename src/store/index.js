@@ -5,6 +5,7 @@ import error from "./error";
 import user from "./user";
 import cash from "./cash";
 import category from "./category";
+import record from "./record";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     error,
     user,
     cash,
-    category
+    category,
+    record
   }
 });
