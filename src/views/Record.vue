@@ -31,16 +31,16 @@
       </p>
 
       <div class="input-field">
-        <input
+        <money
           id="amount"
-          type="number"
           v-model.number="amount"
+          v-bind="money"
           :class="{
             invalid:
               ($v.amount.$dirty && !$v.amount.required) ||
               ($v.amount.$dirty && !$v.amount.minValue)
           }"
-        />
+        >{{amount}}</money>
         <label for="amount">{{"Sum"|localize}}</label>
         <span
           v-if="!$v.amount.minValue"
@@ -97,7 +97,15 @@ export default {
       type: "income",
       description: "",
       amount: null,
-      categories: null
+      categories: null,
+      money: {
+        decimal: ".",
+        thousands: ",",
+        prefix: " ",
+        suffix: "  UZS",
+        precision: 0,
+        masked: false
+      }
     };
   },
   computed: {

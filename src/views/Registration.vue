@@ -131,7 +131,7 @@ export default {
       money: {
         decimal: ".",
         thousands: ",",
-        prefix: "   ",
+        prefix: " ",
         suffix: "  UZS",
         precision: 0,
         masked: false

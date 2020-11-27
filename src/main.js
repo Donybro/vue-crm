@@ -23,7 +23,7 @@ Vue.directive("tooltip", tooltipDirective);
 Vue.use(AsyncComputed);
 Vue.use(Vuelidate);
 Vue.use(messageToastPlugin);
-Vue.use(money, { precision: 4 })
+Vue.use(money, { precision: 0 })
 Vue.component('paginate', Paginate)
 firebase.initializeApp({
   apiKey: "AIzaSyCiHJR89U5d1UCgk1IFli4frvHi1qMMMhM",

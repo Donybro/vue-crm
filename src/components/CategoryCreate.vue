@@ -25,16 +25,16 @@
         </div>
 
         <div class="input-field">
-          <input
+          <money
             id="limit"
-            type="number"
+            v-bind="money"
             v-model="limit"
             :class="{
               invalid:
                 (this.$v.limit.$dirty && !this.$v.limit.required) ||
                 (this.$v.limit.$dirty && !this.$v.limit.minValue)
             }"
-          />
+          >limit</money>
           <label for="limit">{{"Limit" | localize}}</label>
           <span v-if="!this.$v.limit.minValue" class="helper-text invalid">
             {{"Minimal value must be bigger than"|localize}}
@@ -59,7 +59,15 @@ export default {
   data() {
     return {
       limit: null,
-      name: ""
+      name: "",
+      money: {
+        decimal: ".",
+        thousands: ",",
+        prefix: " ",
+        suffix: "  UZS",
+        precision: 0,
+        masked: false
+      }
     };
   },
   validations: {

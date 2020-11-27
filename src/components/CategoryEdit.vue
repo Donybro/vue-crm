@@ -23,7 +23,7 @@
         </div>
 
         <div class="input-field">
-          <input id="limit" type="number" v-model="selectedCategoryLimit" />
+          <money id="limit" v-bind="money" v-model="selectedCategoryLimit">selectedCategoryLimit</money>
           <label for="limit">{{"Limit"|localize}}</label>
         </div>
         <button class="btn waves-effect waves-light" type="submit">
@@ -44,7 +44,15 @@ export default {
       select: null,
       selectedCategoryId: null,
       selectedCategoryName: "",
-      selectedCategoryLimit: null
+      selectedCategoryLimit: null,
+      money: {
+        decimal: ".",
+        thousands: ",",
+        prefix: " ",
+        suffix: "  UZS",
+        precision: 0,
+        masked: false
+      }
     };
   },
   watch: {
