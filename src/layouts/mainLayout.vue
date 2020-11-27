@@ -2,7 +2,7 @@
   <div class="app-main-layout">
     <div v-if="isReady">
       <Navbar @toggle-navbar="navbarIsOpen = !navbarIsOpen" />
-      <SlideMenu v-model="navbarIsOpen" />
+      <SlideMenu :key="locale" v-model="navbarIsOpen" />
       <main class="app-content" :class="{ full: !navbarIsOpen }">
         <div class="app-page">
           <router-view />
@@ -36,6 +36,9 @@ export default {
   computed: {
     isReady() {
       return Object.keys(this.$store.getters.getUserInfo).length;
+    },
+    locale() {
+      return this.$store.getters.getUserInfo.locale;
     }
   }
 };

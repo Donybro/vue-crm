@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{"Categories"|localize}}</h3>
     </div>
     <section>
       <div class="row">
@@ -12,9 +12,7 @@
           @category-updated="refresh"
           :categories="categories"
         />
-        <p v-else class="center col s6">
-          Категорий еще нет
-        </p>
+        <p v-else class="center col s6">{{"Categories is empty"|localize}}</p>
       </div>
     </section>
   </div>

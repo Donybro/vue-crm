@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import localize from "../filters/filter.localize";
 export default {
   name: "SlideMenu",
   props: ["value"],
@@ -21,33 +22,34 @@ export default {
     return {
       menuList: [
         {
-          name: "Счет",
+          name: localize("Bill"),
           to: "/",
           isExact: true
         },
         {
-          name: "История",
+          name: localize("History"),
           to: "/history",
           isExact: false
         },
         {
-          name: "Планирование",
+          name: localize("Planning"),
           to: "/planning",
           isExact: false
         },
         {
-          name: "Новая запись",
+          name: localize("New record"),
           to: "/record",
           isExact: false
         },
         {
-          name: "Категории",
+          name: localize("Categories"),
           to: "/categories",
           isExact: false
         }
       ]
     };
-  }
+  },
+  computed: {}
 };
 </script>
 

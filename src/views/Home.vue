@@ -1,11 +1,8 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Счет</h3>
-      <button
-        class="btn waves-effect waves-light btn-small"
-        @click="fetchCurrencyInfo"
-      >
+      <h3>{{"Bill" | localize}}</h3>
+      <button class="btn waves-effect waves-light btn-small" @click="fetchCurrencyInfo">
         <i class="material-icons">refresh</i>
       </button>
     </div>
@@ -19,7 +16,6 @@
 </template>
 
 <script>
-import messages from "../plugins/messages";
 import Bill from "../components/Bill";
 import Currency from "../components/Currency";
 import Loader from "../components/Loader";
@@ -42,12 +38,10 @@ export default {
     }
   },
   async mounted() {
-    await this.fetchCurrencyInfo();
-    messages[this.$route.query.message]
-      ? setTimeout(() => {
-          this.$customMessageToast(messages[this.$route.query.message]);
-        }, 500)
+    this.$route.query.message
+      ? this.$customMessageToast(this.$route.query.message)
       : null;
+    await this.fetchCurrencyInfo();
   }
 };
 </script>

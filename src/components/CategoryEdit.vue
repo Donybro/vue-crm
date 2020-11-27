@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Редактировать</h4>
+        <h4>{{"Edit"|localize}}</h4>
       </div>
 
       <form @submit.prevent="updateCategory">
@@ -12,23 +12,22 @@
               v-for="category of categories"
               :value="category.id"
               :key="category.id"
-              >{{ category.name }}
-            </option>
+            >{{ category.name }}</option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{"Chose category"|localize}}</label>
         </div>
 
         <div class="input-field">
           <input type="text" id="name" v-model="selectedCategoryName" />
-          <label for="name">Название</label>
+          <label for="name">{{"Name of"|localize}}</label>
         </div>
 
         <div class="input-field">
           <input id="limit" type="number" v-model="selectedCategoryLimit" />
-          <label for="limit">Лимит</label>
+          <label for="limit">{{"Limit"|localize}}</label>
         </div>
         <button class="btn waves-effect waves-light" type="submit">
-          Обновить
+          {{"Update"|localize}}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -64,7 +63,7 @@ export default {
           limit: this.selectedCategoryLimit
         });
         this.$emit("category-updated");
-        this.$customMessageToast("Категория успешно обнавлена");
+        this.$customMessageToast("category edited successfully");
       }
     }
   },

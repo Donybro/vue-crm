@@ -1,50 +1,32 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Новая запись</h3>
+      <h3>{{"New record" | localize}}</h3>
     </div>
     <Loader v-if="isLoading" />
-    <form
-      v-else-if="!isLoading && categories"
-      class="form"
-      @submit.prevent="setRecord"
-    >
+    <form v-else-if="!isLoading && categories" class="form" @submit.prevent="setRecord">
       <div class="input-field">
         <select ref="select" v-model="categoryId">
           <option
             v-for="category in categories"
             :key="category.id"
             :value="category.id"
-          >
-            {{ category.name }}
-          </option>
+          >{{ category.name }}</option>
         </select>
-        <label>Выберите категорию</label>
+        <label>{{"Chose category" | localize}}</label>
       </div>
 
       <p>
         <label>
-          <input
-            class="with-gap"
-            name="type"
-            type="radio"
-            value="income"
-            v-model="type"
-          />
-          <span>Доход</span>
+          <input class="with-gap" name="type" type="radio" value="income" v-model="type" />
+          <span>{{"Income"|localize}}</span>
         </label>
       </p>
 
       <p>
         <label>
-          <input
-            class="with-gap"
-            name="type"
-            type="radio"
-            value="outcome"
-            v-model="type"
-          />
-          <span>Расход</span>
+          <input class="with-gap" name="type" type="radio" value="outcome" v-model="type" />
+          <span>{{"Outcome"|localize}}</span>
         </label>
       </p>
 
@@ -59,10 +41,11 @@
               ($v.amount.$dirty && !$v.amount.minValue)
           }"
         />
-        <label for="amount">Сумма</label>
-        <span v-if="!$v.amount.minValue" class="helper-text invalid"
-          >Сумма должна быть не менее 100</span
-        >
+        <label for="amount">{{"Sum"|localize}}</label>
+        <span
+          v-if="!$v.amount.minValue"
+          class="helper-text invalid"
+        >{{"Sum must be grater than 100"}}</span>
       </div>
 
       <div class="input-field">
@@ -76,20 +59,21 @@
               ($v.description.$dirty && !$v.description.minLength)
           }"
         />
-        <label for="description">Описание</label>
-        <span v-if="!$v.description.minLength" class="helper-text invalid"
-          >Описание должно быть не менее 5 символов</span
-        >
+        <label for="description">{{"Description"|localize}}</label>
+        <span
+          v-if="!$v.description.minLength"
+          class="helper-text invalid"
+        >{{"Description must be bigger than 5 symbols"}}</span>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Создать
+        {{"Create" | localize}}
         <i class="material-icons right">send</i>
       </button>
     </form>
     <p v-else class="center">
-      Категорий нет.
-      <router-link to="/categories">Добавить</router-link>
+      {{"No any categories" | localize}}
+      <router-link to="/categories">{{"Add"|localize}}</router-link>
     </p>
   </div>
 </template>
@@ -155,7 +139,7 @@ export default {
         this.description = "";
         this.amount = null;
         this.$v.$reset();
-        this.$customMessageToast("Запись успешно добавлена !");
+        this.$customMessageToast("Record added successfully !");
       }
     }
   }

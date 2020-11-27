@@ -8,16 +8,19 @@ import AsyncComputed from "vue-async-computed";
 import "materialize-css/dist/js/materialize.min";
 import dateFilter from "./filters/filter.date";
 import filterCurrency from "./filters/filter.currency";
+import filterlocalize from "./filters/filter.localize"
 import messageToastPlugin from "./plugins/custom.message.toast";
 import tooltipDirective from "./directives/tooltip.directive";
 import firebase from "firebase/app";
-
+import Paginate from "vuejs-paginate"
 Vue.filter("date", dateFilter);
 Vue.filter("currency", filterCurrency);
+Vue.filter("localize", filterlocalize);
 Vue.directive("tooltip", tooltipDirective);
 Vue.use(AsyncComputed);
 Vue.use(Vuelidate);
 Vue.use(messageToastPlugin);
+Vue.component('paginate', Paginate)
 import "firebase/auth";
 import "firebase/database";
 

@@ -2,7 +2,7 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Создать</h4>
+        <h4>{{"Create"|localize}}</h4>
       </div>
 
       <form @submit.prevent="createCategory">
@@ -17,10 +17,11 @@
                 (this.$v.name.$dirty && !this.$v.name.minLength)
             }"
           />
-          <label for="name">Название</label>
-          <span v-if="!this.$v.name.minLength" class="helper-text invalid">
-            Название категории слишком короткое
-          </span>
+          <label for="name">{{"Name of" | localize}}</label>
+          <span
+            v-if="!this.$v.name.minLength"
+            class="helper-text invalid"
+          >{{"Name of category is too short"|localize}}</span>
         </div>
 
         <div class="input-field">
@@ -34,15 +35,15 @@
                 (this.$v.limit.$dirty && !this.$v.limit.minValue)
             }"
           />
-          <label for="limit">Лимит</label>
+          <label for="limit">{{"Limit" | localize}}</label>
           <span v-if="!this.$v.limit.minValue" class="helper-text invalid">
-            Минимальная величина должна быть больше
+            {{"Minimal value must be bigger than"|localize}}
             {{ this.$v.limit.$params.minValue.min }}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Создать
+          {{"Create"|localize}}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -83,7 +84,7 @@ export default {
       this.limit = null;
       this.name = "";
       this.$emit("category-created");
-      this.$customMessageToast("Категория успешно добавлена");
+      this.$customMessageToast("category added successfully");
     }
   }
 };

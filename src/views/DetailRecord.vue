@@ -2,10 +2,8 @@
   <div>
     <div>
       <div class="breadcrumb-wrap">
-        <router-link to="/history" class="breadcrumb">История</router-link>
-        <a @click.prevent class="breadcrumb">
-          {{ record.type === "outcome" ? "Расход" : "Доход" }}
-        </a>
+        <router-link to="/history" class="breadcrumb">{{"History"|localize}}</router-link>
+        <a @click.prevent class="breadcrumb">{{ record.type === "outcome" ? "Расход" : "Доход" }}</a>
       </div>
       <div class="row">
         <div class="col s12 m6">
@@ -17,10 +15,9 @@
             }"
           >
             <div class="card-content white-text">
-              <p>Описание: {{ record.description }}</p>
-              <p>Сумма: {{ record.amount | currency }}</p>
-              <p>Категория: {{ record.categoryName }}</p>
-
+              <p>{{ "Description" |localize}} : {{ record.description }}</p>
+              <p>{{"Sum"|localize}} : {{ record.amount | currency }}</p>
+              <p>{{"Category"|localize}} : {{ record.categoryName }}</p>
               <small>{{ Date.parse(record.date) | date("datetime") }}</small>
             </div>
           </div>

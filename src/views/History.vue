@@ -1,17 +1,15 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{"Record`s history" | localize}}</h3>
     </div>
-
-    <div class="history-chart">
-      <canvas></canvas>
-    </div>
-
+    <history-chart :records="records" v-if="records" />
     <section>
       <Loader v-if="loading" />
-      <HistoryTable v-else-if="!loading && records" :records="records" />
-      <p class="center" v-else>Добавленных запией нет</p>
+      <div v-else-if="!loading && records">
+        <HistoryTable :records="records" />
+      </div>
+      <p class="center" v-else>Добавленных запией нет{{"Records is empty" | localize}}</p>
     </section>
   </div>
 </template>
@@ -19,10 +17,11 @@
 <script>
 import HistoryTable from "../components/HistoryTable";
 import Loader from "../components/Loader";
+import historyChart from "../components/historyChart";
 
 export default {
   name: "History",
-  components: { Loader, HistoryTable },
+  components: { Loader, HistoryTable, historyChart },
   data() {
     return {
       loading: true,
@@ -40,7 +39,7 @@ export default {
           category => category.id === record.categoryId
         ).name;
         const typeClass = record.type === "outcome" ? "red" : "green";
-        const typeText = record.type === "outcome" ? "Расход" : "Доход";
+        const typeText = record.type === "outcome" ? "Outcome" : "Income";
         return {
           ...record,
           categoryName,
@@ -48,6 +47,7 @@ export default {
           typeText
         };
       });
+
       this.loading = false;
     }
   }

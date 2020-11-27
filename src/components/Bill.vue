@@ -2,12 +2,14 @@
   <div class="col s12 m6 l4">
     <div class="card light-blue bill-card">
       <div class="card-content white-text">
-        <span class="card-title">Счет в валюте</span>
+        <span class="card-title">{{"Bill in currency" | localize}}</span>
 
         <p class="currency-line" v-for="currency in currencies" :key="currency">
-          <span>{{
+          <span>
+            {{
             getCurrency(currency).toFixed(2) | currency(currency)
-          }}</span>
+            }}
+          </span>
         </p>
       </div>
     </div>
