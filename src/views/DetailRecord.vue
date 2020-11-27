@@ -30,6 +30,9 @@
 <script>
 export default {
   name: "DetailRecord",
+  metaInfo: {
+    titleTemplate: "%s | Detail records"
+  },
   data() {
     return {
       loading: true,

@@ -54,7 +54,7 @@
       </div>
 
       <p class="center">
-        {{"Have`t an account?"}}
+        {{"Have`t an account?"|localize}}
         <router-link to="/registration">{{"Sign in"|localize}}</router-link>
       </p>
     </div>
@@ -66,6 +66,9 @@ import { email, minLength, required } from "vuelidate/lib/validators";
 
 export default {
   name: "Login",
+  metaInfo: {
+    titleTemplate: "%s | Login"
+  },
   data() {
     return {
       password: "",

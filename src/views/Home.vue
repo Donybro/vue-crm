@@ -22,6 +22,9 @@ import Loader from "../components/Loader";
 
 export default {
   name: "Home",
+  metaInfo: {
+    titleTemplate: "%s | Bill"
+  },
   components: { Loader, Currency, Bill },
   data() {
     return {

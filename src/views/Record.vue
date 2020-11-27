@@ -85,6 +85,9 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Record",
+  metaInfo: {
+    titleTemplate: "%s | Record"
+  },
   components: { Loader },
   data() {
     return {

@@ -65,5 +65,8 @@
   "category edited successfully": "category edited successfully",
   "Record added successfully !": "Record added successfully !",
   "Balance :": "Balance : ",
-  "Limit is exceeded": "Limit is exceeded"
+  "Limit is exceeded": "Limit is exceeded",
+  "Initial bill in UZS": "Initial bill in UZS",
+  "Write your initial bill in UZS": "Write your initial bill in UZS",
+  "Initial bill should be more than 1000 sums": "Initial bill should be more than 1000 sums"
 }

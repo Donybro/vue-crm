@@ -65,5 +65,8 @@
   "category edited successfully": "Категория успешно обнавлена",
   "Record added successfully !": "Запись успешно добавлена !",
   "Limit is exceeded": "Превышен лимит на : ",
-  "Balance :": "Остаток средств : "
+  "Balance :": "Остаток средств : ",
+  "Initial bill in UZS": "Начальный капитал в UZS",
+  "Write your initial bill in UZS": "Введите ваш начальный капитал в UZS",
+  "Initial bill should be more than 1000 UZS": "Начальный капитал должен превышать 1000 UZS"
 }

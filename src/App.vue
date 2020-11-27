@@ -8,6 +8,9 @@ import emptyLayout from "./layouts/emptyLayout";
 import mainLayout from "./layouts/mainLayout";
 
 export default {
+  metaInfo: {
+    title: "App"
+  },
   components: {
     emptyLayout,
     mainLayout

@@ -65,6 +65,27 @@
           class="helper-text invalid"
         >{{"Name must have more than 1 symbol" | localize}}</small>
       </div>
+      <div class="input-field">
+        <money
+          id="bill"
+          v-model.number="bill"
+          v-bind="money"
+          :class="{
+            invalid:
+              ($v.bill.$dirty && !$v.bill.required) ||
+              ($v.bill.$dirty && !$v.bill.minValue)
+          }"
+        >{{bill}}</money>
+        <label for="bill">{{"Initial bill in UZS"|localize}}</label>
+        <small
+          v-if="$v.bill.$dirty && !$v.bill.required"
+          class="helper-text invalid"
+        >{{"Write your initial bill in UZS"|localize}}</small>
+        <small
+          v-else-if="$v.bill.$dirty && !$v.bill.minValue"
+          class="helper-text invalid"
+        >{{"Initial bill should be more than 1000 UZS" | localize}}</small>
+      </div>
       <p>
         <label>
           <input type="checkbox" v-model="agree" />
@@ -93,17 +114,28 @@
 </template>
 
 <script>
-import { email, minLength, required } from "vuelidate/lib/validators";
-
+import { email, minLength, required, minValue } from "vuelidate/lib/validators";
 export default {
   name: "Registration",
+  metaInfo: {
+    titleTemplate: "%s | Registration"
+  },
   data() {
     return {
       password: "",
       email: "",
       name: "",
       agree: false,
-      isDisabled: false
+      isDisabled: false,
+      bill: null,
+      money: {
+        decimal: ".",
+        thousands: ",",
+        prefix: "   ",
+        suffix: "  UZS",
+        precision: 0,
+        masked: false
+      }
     };
   },
   computed: {
@@ -117,12 +149,16 @@ export default {
         this.$customErrorToast(erroeMsg);
         this.$store.dispatch("clearCurrentError");
       }
+    },
+    bill(val) {
+      console.log(val);
     }
   },
   validations: {
     password: { required, minLength: minLength(6) },
     email: { email, required },
-    name: { required, minLength: minLength(1) }
+    name: { required, minLength: minLength(1) },
+    bill: { required, minValue: minValue(1000) }
   },
   methods: {
     async submitHandler() {
@@ -135,7 +171,8 @@ export default {
         const result = await this.$store.dispatch("registration", {
           email: this.email,
           password: this.password,
-          name: this.name
+          name: this.name,
+          bill: this.bill
         });
         result ? await this.$router.push("home?message=welcome") : null;
       }

@@ -49,6 +49,9 @@ import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "Profile",
+  metaInfo: {
+    titleTemplate: "%s | Profile"
+  },
   data: () => ({
     name: "",
     isEnglishLang: false

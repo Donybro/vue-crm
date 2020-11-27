@@ -19,7 +19,7 @@ export default {
       const user = firebase.auth().currentUser;
       return user.uid ? user.uid : null;
     },
-    async registration({ dispatch, commit }, { email, password, name }) {
+    async registration({ dispatch, commit }, { email, password, name, bill = 1000 }) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
         const uid = await dispatch("getUId");
@@ -27,7 +27,7 @@ export default {
           .database()
           .ref(`users/${uid}/info`)
           .set({
-            bill: 1000,
+            bill: bill,
             name
           });
         return true;

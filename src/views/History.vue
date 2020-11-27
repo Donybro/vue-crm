@@ -9,7 +9,7 @@
       <div v-else-if="!loading && records">
         <HistoryTable :records="records" />
       </div>
-      <p class="center" v-else>Добавленных запией нет{{"Records is empty" | localize}}</p>
+      <p class="center" v-else>{{"Records is empty" | localize}}</p>
     </section>
   </div>
 </template>
@@ -21,6 +21,9 @@ import historyChart from "../components/historyChart";
 
 export default {
   name: "History",
+  metaInfo: {
+    titleTemplate: "%s | History"
+  },
   components: { Loader, HistoryTable, historyChart },
   data() {
     return {

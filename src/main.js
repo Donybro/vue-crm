@@ -13,6 +13,9 @@ import messageToastPlugin from "./plugins/custom.message.toast";
 import tooltipDirective from "./directives/tooltip.directive";
 import firebase from "firebase/app";
 import Paginate from "vuejs-paginate"
+import "firebase/auth";
+import "firebase/database";
+import money from 'v-money'
 Vue.filter("date", dateFilter);
 Vue.filter("currency", filterCurrency);
 Vue.filter("localize", filterlocalize);
@@ -20,10 +23,8 @@ Vue.directive("tooltip", tooltipDirective);
 Vue.use(AsyncComputed);
 Vue.use(Vuelidate);
 Vue.use(messageToastPlugin);
+Vue.use(money, { precision: 4 })
 Vue.component('paginate', Paginate)
-import "firebase/auth";
-import "firebase/database";
-
 firebase.initializeApp({
   apiKey: "AIzaSyCiHJR89U5d1UCgk1IFli4frvHi1qMMMhM",
   authDomain: "vue-crm-df5dc.firebaseapp.com",

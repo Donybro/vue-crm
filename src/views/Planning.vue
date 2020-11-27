@@ -37,6 +37,9 @@ import filterCurrency from "../filters/filter.currency";
 import localize from "../filters/filter.localize";
 export default {
   name: "Planning",
+  metaInfo: {
+    titleTemplate: "%s | Planning"
+  },
   components: { Loader },
   data() {
     return {

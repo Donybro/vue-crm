@@ -6,6 +6,6 @@ const locales = {
   "en-US": en,
 }
 export default function (key) {
-  const locale = store.getters.getUserInfo.locale || 'en-US';
+  const locale = store.getters.getUserInfo.locale || 'ru-RU';
   return locales[locale][key] || `error locale key : ${key}`
 }

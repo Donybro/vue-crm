@@ -25,6 +25,9 @@ import Loader from "../components/Loader";
 
 export default {
   name: "Categories",
+  metaInfo: {
+    titleTemplate: "%s | Categories"
+  },
   data() {
     return {
       categories: null,
